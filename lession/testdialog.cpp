@@ -41,6 +41,7 @@ TestDialog::TestDialog(QWidget *parent) :
     }
 
     uitest->numbOfQues_label->setText(QString("of %1 available terms").arg(numberOfQues));
+    correctAnswer = 0;
     this->setWindowFlags(Qt::WindowCloseButtonHint|Qt::WindowMaximizeButtonHint|Qt::WindowMinimizeButtonHint);
 }
 
@@ -51,6 +52,11 @@ TestDialog::~TestDialog()
 
 void TestDialog::on_pushButton_clicked()
 {
+    QTime time = QTime::currentTime();
+    qsrand((uint)time.msec());
+    if (!(uitest->checkWritten->isChecked() || uitest->checkMatching->isChecked() ||
+         uitest->checkMultipleChoice->isChecked() || uitest->checkTrueFalse->isChecked())) return;
+    if (uitest->numbOfQues->text() == "") return;
     QSqlQuery query;
     //Lay du lieu tu database cho vao 2 vector: Term & Definition
     for (int i = 0; i < numberOfQues; i++)
@@ -84,14 +90,26 @@ void TestDialog::on_pushButton_clicked()
 
     questionWritten.clear();
     answerWritten.clear();
+    termWritten.clear();
+    definitionWritten.clear();
 
     questionMatching.clear();
     answerMatching.clear();
     selectMatching.clear();
+    termMatching.clear();
+    definitionMatching.clear();
 
     questionMultipleChoice.clear();
     answerMultipleChoice.clear();
     selectMultipleChoice.clear();
+    termMultipleChoice.clear();
+    definitionMultipleChoice.clear();
+
+    questionTrueFalse.clear();
+    answerMultipleChoice.clear();
+    selectTrueFalse.clear();
+    termTrueFalse.clear();
+    definitionTrueFalse.clear();
 
     //Kiem tra xem loai cau hoi nao se duoc generate
     if (uitest->checkWritten->isChecked()) numbOfChecked++;
@@ -115,7 +133,7 @@ void TestDialog::on_pushButton_clicked()
             //Nap so cau hoi cho ngan hang written
             for(int i = 0; i < numberOfWritten; i++)
             {
-                int tmp = rand()%remainQuestion;
+                int tmp = qrand()%remainQuestion;
                 termWritten.append(Term.at(tmp));
                 Term.remove(tmp);           //Loai bo du lieu da lay
                 definitionWritten.append(Definition.at(tmp));
@@ -155,7 +173,7 @@ void TestDialog::on_pushButton_clicked()
             //Nap so cau hoi cho ngan hang Matching
             for(int i = 0; i < numberOfMatching; i++)
             {
-                int tmp = rand()%remainQuestion;
+                int tmp = qrand()%remainQuestion;
                 termMatching.append(Term.at(tmp));
                 Term.remove(tmp);           //Loai bo du lieu da lay
                 definitionMatching.append(Definition.at(tmp));
@@ -193,7 +211,7 @@ void TestDialog::on_pushButton_clicked()
 
                 //Cac thanh phan trong layout chua dap an
                 font.setPointSize(8);
-                int tmp_pos = rand()%remainMatching;
+                int tmp_pos = qrand()%remainMatching;
                 QLabel *phuongan = new QLabel(QString("%1. %2").arg(i+1).arg(templateMatching.at(tmp_pos)));
                 phuongan->setFont(font);
                 templateMatching.remove(tmp_pos);
@@ -223,7 +241,7 @@ void TestDialog::on_pushButton_clicked()
             //Nap so cau hoi cho ngan hang MultipleChoice
             for(int i = 0; i < numberOfMultipleChoice; i++)
             {
-                int tmp = rand()%remainQuestion;
+                int tmp = qrand()%remainQuestion;
                 termMultipleChoice.append(Term.at(tmp));
                 Term.remove(tmp);           //Loai bo du lieu da lay
                 definitionMultipleChoice.append(Definition.at(tmp));
@@ -245,17 +263,34 @@ void TestDialog::on_pushButton_clicked()
                 QLabel *labelQuestion = new QLabel(QString("%1. %2").arg(i+1).arg(termMultipleChoice.at(i)));
                 QVBoxLayout *choiceLayout = new QVBoxLayout;
                 //Choice 1
-                int tmp = rand()%numberOfQues;
+                int tmp = qrand()%numberOfQues;
                 QRadioButton *phuongan1 = new QRadioButton(QString("%1").arg(tempTerm[tmp]));
+                choiceLayout->addWidget(phuongan1);
                 //Choice 2
-                tmp = rand()%numberOfQues;
-                QRadioButton *phuongan2 = new QRadioButton(QString("%1").arg(tempTerm[tmp]));
+                QRadioButton *phuongan2 = new QRadioButton;
+                do
+                {
+                    tmp = qrand()%numberOfQues;
+                    phuongan2->setText(QString("%1").arg(tempTerm[tmp]));
+
+                }while(tempTerm[tmp]== phuongan1->text());
+                choiceLayout->addWidget(phuongan2);
                 //Choice 3
-                tmp = rand()%numberOfQues;
-                QRadioButton *phuongan3 = new QRadioButton(QString("%1").arg(tempTerm[tmp]));
+                QRadioButton *phuongan3 = new QRadioButton;
+                do
+                {
+                    tmp = qrand()%numberOfQues;
+                    phuongan3->setText(QString("%1").arg(tempTerm[tmp]));
+                }while((tempTerm[tmp]==phuongan1->text()) || (tempTerm[tmp]==phuongan2->text()));
                 //Choice 4
-                tmp = rand()%numberOfQues;
-                QRadioButton *phuongan4 = new QRadioButton(QString("%1").arg(tempTerm[tmp]));
+                QRadioButton *phuongan4 = new QRadioButton;
+                do
+                {
+                    tmp = qrand()%numberOfQues;
+                    phuongan4->setText(QString("%1").arg(tempTerm[tmp]));
+                }while((tempTerm[tmp]==phuongan1->text())||(tempTerm[tmp]==phuongan2->text())||(tempTerm[tmp]==phuongan3->text()));
+
+
                 QButtonGroup *group = new QButtonGroup;
                 group->addButton(phuongan1);
                 group->addButton(phuongan2);
@@ -263,8 +298,7 @@ void TestDialog::on_pushButton_clicked()
                 group->addButton(phuongan4);
                 group->setExclusive(true);
 
-                choiceLayout->addWidget(phuongan1);
-                choiceLayout->addWidget(phuongan2);
+
                 choiceLayout->addWidget(phuongan3);
                 choiceLayout->addWidget(phuongan4);
                 questionMultipleChoice.append(labelQuestion);
@@ -280,7 +314,7 @@ void TestDialog::on_pushButton_clicked()
                 }
                 if(!flag)
                 {
-                    tmp = rand()%4;
+                    tmp = qrand()%4;
                     selectMultipleChoice[i*4 + tmp]->setText(definitionMultipleChoice[i]);
                 }
                 uitest->queslayout->addWidget(labelQuestion);
@@ -299,7 +333,7 @@ void TestDialog::on_pushButton_clicked()
             //Nap so cau hoi cho ngan hang TrueFalse
             for(int i = 0; i < numberOfTrueFalse; i++)
             {
-                int tmp = rand()%remainQuestion;
+                int tmp = qrand()%remainQuestion;
                 termTrueFalse.append(Term.at(tmp));
                 Term.remove(tmp);           //Loai bo du lieu da lay
                 definitionTrueFalse.append(Definition.at(tmp));
@@ -319,7 +353,7 @@ void TestDialog::on_pushButton_clicked()
             int remainQuesTrueFalse = numberOfTrueFalse;
             for(int i = 0; i < numberOfTrueFalse; i++)
             {
-                int tmp = rand()%remainQuesTrueFalse;
+                int tmp = qrand()%remainQuesTrueFalse;
                 QLabel *labelQuestion = new QLabel(QString("%1. %2 -> %3").arg(i+1).arg(termTrueFalse[i]).arg(tempDefinitionTF[tmp]));
                 if (tempDefinitionTF[tmp] == definitionTrueFalse[i]) answerTrueFalse.append(true);
                 else answerTrueFalse.append(false);
@@ -357,4 +391,66 @@ void TestDialog::clearLayout(QLayout *layout)
             delete child->widget();
         delete child;
     }
+}
+
+void TestDialog::on_pushButton_2_clicked()
+{
+    correctAnswer = 0;
+    //Kiem tra tinh diem
+    if (uitest->checkWritten->isChecked())
+    {
+        QString answer;
+        //kiem tra so cau dung trong written
+        for (int i = 0; i < termWritten.size(); i++)
+        {
+            answer = answerWritten[i]->text();
+            while (answer[0] == ' ') answer.remove(0,1);
+            while (answer[answer.length() - 1] == ' ') answer.remove(answer.length() - 1,1);
+            if(answer == definitionWritten[i]) correctAnswer++;
+        }
+    }
+    if (uitest->checkMatching->isChecked())
+    {
+        QString answer;
+        //kiem tra so cau dung trong matching
+        for (int i = 0; i < termMatching.size(); i++)
+        {
+            answer = answerMatching[i]->text();
+            while (answer[0] == ' ') answer.remove(0,1);
+            while (answer[answer.length() - 1] == ' ') answer.remove(answer.length() - 1,1);
+            QString select_tmp = selectMatching[answer.toInt()]->text();
+            select_tmp.remove(0,select_tmp.indexOf('.')+2);
+            if(definitionMatching[i] == select_tmp) correctAnswer++;
+        }
+    }
+    if (uitest->checkMultipleChoice->isChecked())
+    {
+        //kiem tra so cau dung trong multiple choice
+        for (int i = 0; i < termMultipleChoice.size(); i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                if (selectMultipleChoice[i+j]->isChecked() && (selectMultipleChoice[i+j]->text() == definitionMultipleChoice[i]))
+                    correctAnswer++;
+            }
+            qDebug() << i;
+        }
+
+    }
+    if (uitest->checkTrueFalse->isChecked())
+    {
+        //kiem tra so cau dung trong true false
+        for (int i = 0; i < termTrueFalse.size(); i++)
+        {
+            for (int j = 0; j < 2; j++)
+            {
+                if(selectTrueFalse[i+j]->isChecked())
+                {
+                    bool flag = (j == 0) ? true : false;
+                    if (answerTrueFalse[i] == flag) correctAnswer++;
+                }
+            }
+        }
+    }
+    QMessageBox::warning(this,"Total Score",QString("Your score is %1").arg(correctAnswer));
 }

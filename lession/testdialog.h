@@ -34,6 +34,8 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::TestDialog *uitest;
 
@@ -75,7 +77,7 @@ private:
 
     int numberOfQues;   //So cau hoi toi da duoc sinh ra trong ngan hang cau hoi
     int numbOfChecked;  //So phan checked de sinh ra cau hoi
-
+    int correctAnswer;
 };
 
 #endif // TESTDIALOG_H

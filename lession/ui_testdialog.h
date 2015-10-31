@@ -60,6 +60,7 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QPushButton *pushButton;
     QSpacerItem *horizontalSpacer;
+    QPushButton *pushButton_2;
     QSpacerItem *verticalSpacer;
 
     void setupUi(QDialog *TestDialog)
@@ -185,6 +186,11 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer);
 
+        pushButton_2 = new QPushButton(frame);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+
+        horizontalLayout_2->addWidget(pushButton_2);
+
 
         verticalLayout->addLayout(horizontalLayout_2);
 
@@ -223,6 +229,7 @@ public:
         label_3->setText(QApplication::translate("TestDialog", "Question limit", 0));
         numbOfQues_label->setText(QApplication::translate("TestDialog", "of x available terms", 0));
         pushButton->setText(QApplication::translate("TestDialog", "Create new test", 0));
+        pushButton_2->setText(QApplication::translate("TestDialog", "Check Answer", 0));
     } // retranslateUi
 
 };
