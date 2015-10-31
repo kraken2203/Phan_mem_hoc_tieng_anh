@@ -73,6 +73,10 @@ void TestDialog::on_pushButton_clicked()
             qDebug() << "query SELECT is false111111111111111";
         }
     }
+
+    //Phuc vu cho Multiple Choice
+    QVector <QString> tempTerm(Term);               //Bien tam luu term
+
     //Setup for Starting
     numbOfChecked = 0;                  //Setup ban dau so checked = 0
     //Xoa tat ca cac cau hoi cu, truoc khi generate cau hoi moi
@@ -80,17 +84,20 @@ void TestDialog::on_pushButton_clicked()
 
     questionWritten.clear();
     answerWritten.clear();
+
     questionMatching.clear();
     answerMatching.clear();
     selectMatching.clear();
 
+    questionMultipleChoice.clear();
+    answerMultipleChoice.clear();
+    selectMultipleChoice.clear();
 
     //Kiem tra xem loai cau hoi nao se duoc generate
     if (uitest->checkWritten->isChecked()) numbOfChecked++;
     if (uitest->checkMatching->isChecked()) numbOfChecked++;
     if (uitest->checkMultipleChoice->isChecked()) numbOfChecked++;
     if (uitest->checkTrueFalse->isChecked()) numbOfChecked++;
-    QString label_Question;
     int numberofques = uitest->numbOfQues->text().toInt();  //So cau hoi se duoc sinh ra theo yeu cau
     int sodu = numberofques%numbOfChecked;                  //So cau hoi du ra sau khi chia deu
     int remainQuestion = numberOfQues;                      //So cau hoi con lai trong ngan hang cau hoi
@@ -99,11 +106,7 @@ void TestDialog::on_pushButton_clicked()
         //Generate for Written Question
         if (uitest->checkWritten->isChecked())
         {
-            //Ngan hang cau hoi cho Written
-            QVector <QString> termWritten;
-            QVector <QString> definitionWritten;
-
-
+            QString label_Question;
             //Tinh toan so cau hoi trong phan written
             int numberOfWritten = numberofques/numbOfChecked;
             if(sodu>0) numberOfWritten++;
@@ -120,7 +123,8 @@ void TestDialog::on_pushButton_clicked()
                 remainQuestion--;
             }
 
-            //Tao cac format cau hoi trong muc Written Question
+            //=====Tao cac format cau hoi trong muc Written Question
+            //Tao Categorise
             QLabel *labelCategories = new QLabel(QString("%1 Written questions").arg(numberOfWritten));
             QFont font;
             font.setPointSize(13);
@@ -138,14 +142,11 @@ void TestDialog::on_pushButton_clicked()
                 uitest->queslayout->addWidget(answerWritten.at(i),Qt::AlignLeft);
             }
         }
-        uitest->queslayout->addSpacing(15);
         //Generate for Matching Question
         if (uitest->checkMatching->isChecked())
         {
-            //Ngan hang cau hoi cho Matching
-            QVector <QString> termMatching;
-            QVector <QString> definitionMatching;
-
+            QString label_Question;
+            uitest->queslayout->addSpacing(15);
             //Tinh toan so cau hoi trong phan Matching
             int numberOfMatching = numberofques/numbOfChecked;
             if(sodu>0) numberOfMatching++;
@@ -165,7 +166,8 @@ void TestDialog::on_pushButton_clicked()
             QVector <QString> templateMatching(definitionMatching);
             int remainMatching = numberOfMatching;
 
-            //Tao cac format cau hoi trong muc Matching Question
+            //=====Tao cac format cau hoi trong muc Matching Question
+            //Tao Categorise
             QLabel *labelCategories = new QLabel(QString("%1 Matching questions").arg(numberOfMatching));
             QFont font;
             font.setPointSize(13);
@@ -209,14 +211,10 @@ void TestDialog::on_pushButton_clicked()
             hlayout->addLayout(vlayout_dapan);
             uitest->queslayout->addLayout(hlayout);
         }
-        uitest->queslayout->addSpacing(15);
         //Generate for MultipleChoice Question
         if (uitest->checkMultipleChoice->isChecked())
         {
-            //Ngan hang cau hoi cho MultipleChoice
-            QVector <QString> termMultipleChoice;
-            QVector <QString> definitionMultipleChoice;
-
+            uitest->queslayout->addSpacing(15);
             //Tinh toan so cau hoi trong phan MultipleChoice
             int numberOfMultipleChoice = numberofques/numbOfChecked;
             if(sodu>0) numberOfMultipleChoice++;
@@ -232,19 +230,67 @@ void TestDialog::on_pushButton_clicked()
                 Definition.remove(tmp);     //Loai bo du lieu da lay
                 remainQuestion--;
             }
-            //Tao cac format cau hoi trong muc MultipleChoice Question
+            //=====Tao cac format cau hoi trong muc MultipleChoice Question
+            //Tao Categorise
+            QLabel *labelCategories = new QLabel(QString("%1 Multiple Choice questions").arg(numberOfMultipleChoice));
+            QFont font;
+            font.setPointSize(13);
+            font.setBold(true);
+            labelCategories->setFont(font);
+            uitest->queslayout->addWidget(labelCategories);
 
+            //int remainQuesMultipleChoice = numberOfQues;
+            for (int i = 0; i < numberOfMultipleChoice; i++)
+            {
+                QLabel *labelQuestion = new QLabel(QString("%1. %2").arg(i+1).arg(termMultipleChoice.at(i)));
+                QVBoxLayout *choiceLayout = new QVBoxLayout;
+                //Choice 1
+                int tmp = rand()%numberOfQues;
+                QRadioButton *phuongan1 = new QRadioButton(QString("%1").arg(tempTerm[tmp]));
+                //Choice 2
+                tmp = rand()%numberOfQues;
+                QRadioButton *phuongan2 = new QRadioButton(QString("%1").arg(tempTerm[tmp]));
+                //Choice 3
+                tmp = rand()%numberOfQues;
+                QRadioButton *phuongan3 = new QRadioButton(QString("%1").arg(tempTerm[tmp]));
+                //Choice 4
+                tmp = rand()%numberOfQues;
+                QRadioButton *phuongan4 = new QRadioButton(QString("%1").arg(tempTerm[tmp]));
+                QButtonGroup *group = new QButtonGroup;
+                group->addButton(phuongan1);
+                group->addButton(phuongan2);
+                group->addButton(phuongan3);
+                group->addButton(phuongan4);
+                group->setExclusive(true);
+
+                choiceLayout->addWidget(phuongan1);
+                choiceLayout->addWidget(phuongan2);
+                choiceLayout->addWidget(phuongan3);
+                choiceLayout->addWidget(phuongan4);
+                questionMultipleChoice.append(labelQuestion);
+                selectMultipleChoice.append(phuongan1);
+                selectMultipleChoice.append(phuongan2);
+                selectMultipleChoice.append(phuongan3);
+                selectMultipleChoice.append(phuongan4);
+                bool flag = false;
+                //Kiem tra xem phan choice lay ra co ton tai correct answer chua ?
+                for (int j = 0; j < 4; j++)
+                {
+                    if (selectMultipleChoice[i+j]->text() == definitionMultipleChoice[i]) flag = true;
+                }
+                if(!flag)
+                {
+                    tmp = rand()%4;
+                    selectMultipleChoice[i*4 + tmp]->setText(definitionMultipleChoice[i]);
+                }
+                uitest->queslayout->addWidget(labelQuestion);
+                uitest->queslayout->addLayout(choiceLayout);
+            }
         }
-        uitest->queslayout->addSpacing(15);
         //Generate for True/False Question
         if (uitest->checkTrueFalse->isChecked())
         {
-            //Ngan hang cau hoi cho TrueFalse
-            QVector <QString> termTrueFalse;
-            QVector <QString> definitionTrueFalse;
-
-            int counterQuesTrueFalse = 0; //Dem so cau hoi dang sinh ra trong TrueFalse
-
+            uitest->queslayout->addSpacing(15);
             //Tinh toan so cau hoi trong phan TrueFalse
             int numberOfTrueFalse = numberofques/numbOfChecked;
             if(sodu>0) numberOfTrueFalse++;
@@ -260,7 +306,41 @@ void TestDialog::on_pushButton_clicked()
                 Definition.remove(tmp);     //Loai bo du lieu da lay
                 remainQuestion--;
             }
+            QVector <QString> tempDefinitionTF(definitionTrueFalse); //Bien tam luu definition
+
             //Tao cac format cau hoi trong muc TrueFalse Question
+            //Tao Categorise
+            QLabel *labelCategories = new QLabel(QString("%1 True/False questions").arg(numberOfTrueFalse));
+            QFont font;
+            font.setPointSize(13);
+            font.setBold(true);
+            labelCategories->setFont(font);
+            uitest->queslayout->addWidget(labelCategories);
+            int remainQuesTrueFalse = numberOfTrueFalse;
+            for(int i = 0; i < numberOfTrueFalse; i++)
+            {
+                int tmp = rand()%remainQuesTrueFalse;
+                QLabel *labelQuestion = new QLabel(QString("%1. %2 -> %3").arg(i+1).arg(termTrueFalse[i]).arg(tempDefinitionTF[tmp]));
+                if (tempDefinitionTF[tmp] == definitionTrueFalse[i]) answerTrueFalse.append(true);
+                else answerTrueFalse.append(false);
+                QHBoxLayout *layout_dapan = new QHBoxLayout;
+                QRadioButton *True = new QRadioButton("True");
+                QRadioButton *False = new QRadioButton("Flase");
+                QButtonGroup *group = new QButtonGroup;
+                group->addButton(True);
+                group->addButton(False);
+                group->setExclusive(true);
+                layout_dapan->addSpacing(50);
+                layout_dapan->addWidget(True,Qt::AlignLeft);
+                layout_dapan->addSpacing(10);
+                layout_dapan->addWidget(False,Qt::AlignLeft);
+                uitest->queslayout->addWidget(labelQuestion);
+                uitest->queslayout->addLayout(layout_dapan);
+                selectTrueFalse.append(True);
+                selectTrueFalse.append(False);
+                questionTrueFalse.append(labelQuestion);
+                remainQuesTrueFalse--;
+            }
         }
     }
     else

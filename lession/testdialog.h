@@ -15,6 +15,8 @@
 #include <QFont>
 #include <QHBoxLayout>
 #include <QSpacerItem>
+#include <QRadioButton>
+#include <QButtonGroup>
 
 namespace Ui {
 class TestDialog;
@@ -38,19 +40,33 @@ private:
     //Manager Written
     QVector <QLabel*> questionWritten;          //Quan ly cau hoi duoc sinh ra cua written
     QVector <QLineEdit*> answerWritten;         //Quan ly phan dien cau tra loi duoc sinh ra cua written
+    //Ngan hang cau hoi cho Written
+    QVector <QString> termWritten;
+    QVector <QString> definitionWritten;
 
     //Manager Matching
     QVector <QLabel*> questionMatching;         //Quan ly cau hoi duoc sinh ra cua matching
     QVector <QLabel*> selectMatching;           //Quan ly phuong an duoc sinh ra cua matching
     QVector <QLineEdit*> answerMatching;        //Quan ly phan dien cau tra loi duoc sinh ra cua matching
+    //Ngan hang cau hoi cho Matching
+    QVector <QString> termMatching;
+    QVector <QString> definitionMatching;
 
     //Manager MultipleChoice
     QVector <QLabel*> questionMultipleChoice;   //Quan ly cau hoi duoc sinh ra cua MultipleChoice
     QVector <QLineEdit*> answerMultipleChoice;  //Quan ly phan dien cau tra loi duoc sinh ra cua MultipleChoice
+    QVector <QRadioButton*> selectMultipleChoice; //Quan ly cac phuong an lua chon duoc tao ra
+    //Ngan hang cau hoi cho MultipleChoice
+    QVector <QString> termMultipleChoice;
+    QVector <QString> definitionMultipleChoice;
 
     //Manager TrueFalse
     QVector <QLabel*> questionTrueFalse;        //Quan ly cau hoi duoc sinh ra cua TrueFalse
-    QVector <QLineEdit*> answerTrueFalse;       //Quan ly phan dien cau tra loi duoc sinh ra cua TrueFalse
+    QVector <bool> answerTrueFalse;       //Quan ly phan dien cau tra loi duoc sinh ra cua TrueFalse
+    QVector <QRadioButton*> selectTrueFalse;    //Quan ly cac phuong an duoc chon
+    //Ngan hang cau hoi cho TrueFalse
+    QVector <QString> termTrueFalse;
+    QVector <QString> definitionTrueFalse;
 
     QVector <QString> Term;                     //Doc term tu database
     QVector <QString> Definition;               //Doc definition tu database
