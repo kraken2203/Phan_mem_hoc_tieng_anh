@@ -27,27 +27,28 @@ class TestDialog : public QDialog
 public:
     explicit TestDialog(QWidget *parent = 0);
     ~TestDialog();
+    void clearLayout(QLayout *layout);          //Xoa tat ca cac item layout va widget trong parent layout
 
 private slots:
     void on_pushButton_clicked();
 
 private:
     Ui::TestDialog *uitest;
-    //Control for Written
+
+    //Manager Written
     QVector <QLabel*> questionWritten;          //Quan ly cau hoi duoc sinh ra cua written
     QVector <QLineEdit*> answerWritten;         //Quan ly phan dien cau tra loi duoc sinh ra cua written
 
-    //Control for Matching
-    QVector <QLabel*> sttMatching;              //Quan ly so thu tu cua cau hoi duoc sinh ra cua matching
+    //Manager Matching
     QVector <QLabel*> questionMatching;         //Quan ly cau hoi duoc sinh ra cua matching
     QVector <QLabel*> selectMatching;           //Quan ly phuong an duoc sinh ra cua matching
     QVector <QLineEdit*> answerMatching;        //Quan ly phan dien cau tra loi duoc sinh ra cua matching
-    QVector <QHBoxLayout*> hlayout_cauhoi;
-    QVBoxLayout *vlayout_dapan;
 
+    //Manager MultipleChoice
     QVector <QLabel*> questionMultipleChoice;   //Quan ly cau hoi duoc sinh ra cua MultipleChoice
     QVector <QLineEdit*> answerMultipleChoice;  //Quan ly phan dien cau tra loi duoc sinh ra cua MultipleChoice
 
+    //Manager TrueFalse
     QVector <QLabel*> questionTrueFalse;        //Quan ly cau hoi duoc sinh ra cua TrueFalse
     QVector <QLineEdit*> answerTrueFalse;       //Quan ly phan dien cau tra loi duoc sinh ra cua TrueFalse
 

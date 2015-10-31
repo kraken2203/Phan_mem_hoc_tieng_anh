@@ -76,14 +76,14 @@ void TestDialog::on_pushButton_clicked()
     //Setup for Starting
     numbOfChecked = 0;                  //Setup ban dau so checked = 0
     //Xoa tat ca cac cau hoi cu, truoc khi generate cau hoi moi
+    clearLayout(uitest->queslayout);
 
-    QLayoutItem *item = NULL;
-    while ((item = uitest->queslayout->takeAt(0)) != 0)
-    {
-        delete item->widget();
-    }
     questionWritten.clear();
     answerWritten.clear();
+    questionMatching.clear();
+    answerMatching.clear();
+    selectMatching.clear();
+
 
     //Kiem tra xem loai cau hoi nao se duoc generate
     if (uitest->checkWritten->isChecked()) numbOfChecked++;
@@ -217,8 +217,6 @@ void TestDialog::on_pushButton_clicked()
             QVector <QString> termMultipleChoice;
             QVector <QString> definitionMultipleChoice;
 
-            int counterQuesMultipleChoice = 0; //Dem so cau hoi dang sinh ra trong MultipleChoice
-
             //Tinh toan so cau hoi trong phan MultipleChoice
             int numberOfMultipleChoice = numberofques/numbOfChecked;
             if(sodu>0) numberOfMultipleChoice++;
@@ -235,6 +233,7 @@ void TestDialog::on_pushButton_clicked()
                 remainQuestion--;
             }
             //Tao cac format cau hoi trong muc MultipleChoice Question
+
         }
         uitest->queslayout->addSpacing(15);
         //Generate for True/False Question
@@ -266,4 +265,16 @@ void TestDialog::on_pushButton_clicked()
     }
     else
         QMessageBox::warning(this,"Warning","Over number of question!");
+}
+void TestDialog::clearLayout(QLayout *layout)
+{
+    QLayoutItem *child;
+    while ((child = layout->takeAt(0)) != 0)
+    {
+        if(child->layout() != 0)
+            clearLayout( child->layout() );
+        else if(child->widget() != 0)
+            delete child->widget();
+        delete child;
+    }
 }
