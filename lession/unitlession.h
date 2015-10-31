@@ -3,10 +3,12 @@
 
 #include <QDialog>
 #include "testdialog.h"
+#include "learndialog.h"
 #include <QtSql>
 #include <QFileInfo>
 #include <QDebug>
 #include <QSqlQueryModel>
+#include <QMessageBox>
 
 namespace Ui {
 class unitlession;
@@ -21,7 +23,9 @@ public:
     ~unitlession();
 
 private slots:
-    void on_pushButton_2_clicked();
+    void on_pushTest_clicked();
+
+    void on_pushLearn_clicked();
 
 private:
     Ui::unitlession *ui;

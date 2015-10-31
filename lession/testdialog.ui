@@ -34,8 +34,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>391</width>
-         <height>418</height>
+         <width>69</width>
+         <height>414</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -43,9 +43,6 @@
          <layout class="QVBoxLayout" name="queslayout"/>
         </item>
        </layout>
-       <zorder>verticalLayoutWidget</zorder>
-       <zorder>verticalLayoutWidget</zorder>
-       <zorder>verticalLayoutWidget</zorder>
       </widget>
      </widget>
      <widget class="QWidget" name="layoutWidget">
@@ -76,28 +73,28 @@
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="checkBox">
+             <widget class="QCheckBox" name="checkWritten">
               <property name="text">
                <string>Written</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="checkBox_2">
+             <widget class="QCheckBox" name="checkMatching">
               <property name="text">
                <string>Matching</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="checkBox_3">
+             <widget class="QCheckBox" name="checkMultipleChoice">
               <property name="text">
                <string>Multiple choice</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QCheckBox" name="checkBox_4">
+             <widget class="QCheckBox" name="checkTrueFalse">
               <property name="text">
                <string>True/False</string>
               </property>
@@ -118,21 +115,21 @@
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButton">
+             <widget class="QRadioButton" name="rbTerm">
               <property name="text">
                <string>Term</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButton_2">
+             <widget class="QRadioButton" name="rbDefinition">
               <property name="text">
                <string>Definition</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QRadioButton" name="radioButton_3">
+             <widget class="QRadioButton" name="rbBoth">
               <property name="text">
                <string>Both</string>
               </property>

@@ -1,6 +1,6 @@
 #include "unitlession.h"
 #include "ui_unitlession.h"
-#define Path_to_db "/home/luutung/data/database.db"
+#define Path_to_db "F:/GITHUB/Phan_mem_hoc_tieng_anh/lession/database.db"
 
 unitlession::unitlession(QWidget *parent) :
     QDialog(parent),
@@ -21,6 +21,7 @@ unitlession::unitlession(QWidget *parent) :
     else
     {
         qDebug() << "Unconnected to DataBase";
+        QMessageBox::warning(this,"Unconnected","No found database");
     }
 
 
@@ -61,9 +62,16 @@ unitlession::~unitlession()
     delete ui;
 }
 
-void unitlession::on_pushButton_2_clicked()
+void unitlession::on_pushTest_clicked()
 {
     TestDialog openTestDialog;
     openTestDialog.setModal(true);
     openTestDialog.exec();
+}
+
+void unitlession::on_pushLearn_clicked()
+{
+    learndialog openLearnDialog;
+    openLearnDialog.setModal(true);
+    openLearnDialog.exec();
 }

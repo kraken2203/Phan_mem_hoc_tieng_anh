@@ -14,13 +14,16 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         unitlession.cpp \
-    testdialog.cpp
+    testdialog.cpp \
+    learndialog.cpp
 
 HEADERS  += unitlession.h \
-    testdialog.h
+    testdialog.h \
+    learndialog.h
 
 FORMS    += unitlession.ui \
-    testdialog.ui
+    testdialog.ui \
+    learndialog.ui
 
 RESOURCES += \
     icon.qrc
