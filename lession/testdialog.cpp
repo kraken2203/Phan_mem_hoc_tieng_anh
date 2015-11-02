@@ -61,22 +61,27 @@ void TestDialog::on_pushButton_clicked()
     //Lay du lieu tu database cho vao 2 vector: Term & Definition
     for (int i = 0; i < numberOfQues; i++)
     {
-        if(query.exec(QString("SELECT term, definition FROM vocab WHERE rowid = %1").arg(i+1)))
+        if (uitest->rbTerm->isChecked())
         {
-            if(query.next())
+            if(query.exec(QString("SELECT term, definition FROM vocab WHERE rowid = %1").arg(i+1)))
             {
-                qDebug() << "query.next() is successful111111";
-                Term.append(query.value(0).toString());
-                Definition.append(query.value(1).toString());
-            }
-            else
-            {
-                qDebug() << "query.next() is false111111111";
+                if(query.next())
+                {
+                    Term.append(query.value(0).toString());
+                    Definition.append(query.value(1).toString());
+                }
             }
         }
-        else
+        else if (uitest->rbDefinition->isChecked())
         {
-            qDebug() << "query SELECT is false111111111111111";
+            if(query.exec(QString("SELECT term, definition FROM vocab WHERE rowid = %1").arg(i+1)))
+            {
+                if(query.next())
+                {
+                    Term.append(query.value(1).toString());
+                    Definition.append(query.value(0).toString());
+                }
+            }
         }
     }
 
@@ -380,6 +385,7 @@ void TestDialog::on_pushButton_clicked()
     else
         QMessageBox::warning(this,"Warning","Over number of question!");
 }
+
 void TestDialog::clearLayout(QLayout *layout)
 {
     QLayoutItem *child;
@@ -404,9 +410,12 @@ void TestDialog::on_pushButton_2_clicked()
         for (int i = 0; i < termWritten.size(); i++)
         {
             answer = answerWritten[i]->text();
-            while (answer[0] == ' ') answer.remove(0,1);
-            while (answer[answer.length() - 1] == ' ') answer.remove(answer.length() - 1,1);
-            if(answer == definitionWritten[i]) correctAnswer++;
+            if (answer != NULL)
+            {
+                while (answer[0] == ' ') answer.remove(0,1);
+                while (answer[answer.length() - 1] == ' ') answer.remove(answer.length() - 1,1);
+                if(answer == definitionWritten[i]) correctAnswer++;
+            }
         }
     }
     if (uitest->checkMatching->isChecked())
@@ -416,11 +425,14 @@ void TestDialog::on_pushButton_2_clicked()
         for (int i = 0; i < termMatching.size(); i++)
         {
             answer = answerMatching[i]->text();
-            while (answer[0] == ' ') answer.remove(0,1);
-            while (answer[answer.length() - 1] == ' ') answer.remove(answer.length() - 1,1);
-            QString select_tmp = selectMatching[answer.toInt()]->text();
-            select_tmp.remove(0,select_tmp.indexOf('.')+2);
-            if(definitionMatching[i] == select_tmp) correctAnswer++;
+            if(!(answer == NULL || answer.toInt() > answerMatching.size() || answer.toInt() < 0))
+            {
+                while (answer[0] == ' ') answer.remove(0,1);
+                while (answer[answer.length() - 1] == ' ') answer.remove(answer.length() - 1,1);
+                QString select_tmp = selectMatching[answer.toInt()-1]->text();
+                select_tmp.remove(0,select_tmp.indexOf('.')+2);
+                if(definitionMatching[i] == select_tmp) correctAnswer++;
+            }
         }
     }
     if (uitest->checkMultipleChoice->isChecked())
@@ -430,10 +442,13 @@ void TestDialog::on_pushButton_2_clicked()
         {
             for (int j = 0; j < 4; j++)
             {
-                if (selectMultipleChoice[i+j]->isChecked() && (selectMultipleChoice[i+j]->text() == definitionMultipleChoice[i]))
-                    correctAnswer++;
+                if (selectMultipleChoice[i*4+j]->isChecked())
+                    if (selectMultipleChoice[i*4+j]->text() == definitionMultipleChoice[i])
+                    {
+                        qDebug() << i + j;
+                        correctAnswer++;
+                    }
             }
-            qDebug() << i;
         }
 
     }
@@ -444,7 +459,7 @@ void TestDialog::on_pushButton_2_clicked()
         {
             for (int j = 0; j < 2; j++)
             {
-                if(selectTrueFalse[i+j]->isChecked())
+                if(selectTrueFalse[i*2+j]->isChecked())
                 {
                     bool flag = (j == 0) ? true : false;
                     if (answerTrueFalse[i] == flag) correctAnswer++;

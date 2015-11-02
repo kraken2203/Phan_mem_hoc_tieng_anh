@@ -119,6 +119,9 @@
               <property name="text">
                <string>Term</string>
               </property>
+              <property name="checked">
+               <bool>false</bool>
+              </property>
              </widget>
             </item>
             <item>
@@ -126,12 +129,8 @@
               <property name="text">
                <string>Definition</string>
               </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QRadioButton" name="rbBoth">
-              <property name="text">
-               <string>Both</string>
+              <property name="checked">
+               <bool>true</bool>
               </property>
              </widget>
             </item>

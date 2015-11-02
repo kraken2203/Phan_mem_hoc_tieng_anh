@@ -52,7 +52,6 @@ public:
     QLabel *label_2;
     QRadioButton *rbTerm;
     QRadioButton *rbDefinition;
-    QRadioButton *rbBoth;
     QLabel *label_3;
     QHBoxLayout *horizontalLayout;
     QLineEdit *numbOfQues;
@@ -141,18 +140,15 @@ public:
 
         rbTerm = new QRadioButton(frame);
         rbTerm->setObjectName(QStringLiteral("rbTerm"));
+        rbTerm->setChecked(false);
 
         verticalLayout->addWidget(rbTerm);
 
         rbDefinition = new QRadioButton(frame);
         rbDefinition->setObjectName(QStringLiteral("rbDefinition"));
+        rbDefinition->setChecked(true);
 
         verticalLayout->addWidget(rbDefinition);
-
-        rbBoth = new QRadioButton(frame);
-        rbBoth->setObjectName(QStringLiteral("rbBoth"));
-
-        verticalLayout->addWidget(rbBoth);
 
         label_3 = new QLabel(frame);
         label_3->setObjectName(QStringLiteral("label_3"));
@@ -225,7 +221,6 @@ public:
         label_2->setText(QApplication::translate("TestDialog", "Start with", 0));
         rbTerm->setText(QApplication::translate("TestDialog", "Term", 0));
         rbDefinition->setText(QApplication::translate("TestDialog", "Definition", 0));
-        rbBoth->setText(QApplication::translate("TestDialog", "Both", 0));
         label_3->setText(QApplication::translate("TestDialog", "Question limit", 0));
         numbOfQues_label->setText(QApplication::translate("TestDialog", "of x available terms", 0));
         pushButton->setText(QApplication::translate("TestDialog", "Create new test", 0));
