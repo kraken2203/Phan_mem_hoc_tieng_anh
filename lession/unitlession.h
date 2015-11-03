@@ -4,6 +4,8 @@
 #include <QDialog>
 #include "testdialog.h"
 #include "learndialog.h"
+#include "dialogspeller.h"
+
 #include <QtSql>
 #include <QFileInfo>
 #include <QDebug>
@@ -26,6 +28,8 @@ private slots:
     void on_pushTest_clicked();
 
     void on_pushLearn_clicked();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::unitlession *ui;

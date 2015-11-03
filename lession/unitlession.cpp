@@ -75,3 +75,11 @@ void unitlession::on_pushLearn_clicked()
     openLearnDialog.setModal(true);
     openLearnDialog.exec();
 }
+
+
+void unitlession::on_pushButton_clicked()
+{
+    DialogSpeller openSpellerDialog;
+    openSpellerDialog.setModal(true);
+    openSpellerDialog.exec();
+}

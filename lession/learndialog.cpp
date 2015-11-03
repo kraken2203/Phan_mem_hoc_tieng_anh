@@ -7,6 +7,7 @@ learndialog::learndialog(QWidget *parent) :
     uilearn(new Ui::learndialog)
 {
     uilearn->setupUi(this);
+
     mydb = QSqlDatabase::addDatabase("QSQLITE");
     mydb.setDatabaseName(Path_to_db);
     QFileInfo checkFile(Path_to_db);
