@@ -9,6 +9,9 @@
 #include <QDebug>
 #include <QMessageBox>
 #include <QTimer>
+#include <QMediaPlayer>
+
+#include "unitlession.h"
 
 namespace Ui {
 class DialogSpeller;
@@ -47,6 +50,7 @@ private:
     int correctAnswer;
 
     QTimer *timer;
+    QMediaPlayer *player;
 };
 
 #endif // DIALOGSPELLER_H

@@ -1,6 +1,5 @@
 #include "learndialog.h"
 #include "ui_learndialog.h"
-#define Path_to_db "F:/GITHUB/Phan_mem_hoc_tieng_anh/lession/database.db"
 
 learndialog::learndialog(QWidget *parent) :
     QDialog(parent),

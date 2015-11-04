@@ -6,6 +6,8 @@
 #include <QSqlDatabase>
 #include <QDebug>
 #include <QSqlQuery>
+#include "unitlession.h"
+
 
 namespace Ui {
 class learndialog;

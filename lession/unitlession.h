@@ -12,6 +12,8 @@
 #include <QSqlQueryModel>
 #include <QMessageBox>
 
+#define Path_to_db "F:/GITHUB/Phan_mem_hoc_tieng_anh/lession/database.db"
+
 namespace Ui {
 class unitlession;
 }

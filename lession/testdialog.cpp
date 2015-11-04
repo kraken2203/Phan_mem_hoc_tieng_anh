@@ -1,6 +1,5 @@
 #include "testdialog.h"
 #include "ui_testdialog.h"
-#define Path_to_db "F:/GITHUB/Phan_mem_hoc_tieng_anh/lession/database.db"
 
 TestDialog::TestDialog(QWidget *parent) :
     QDialog(parent),

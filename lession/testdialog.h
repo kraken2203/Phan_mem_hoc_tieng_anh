@@ -18,6 +18,8 @@
 #include <QRadioButton>
 #include <QButtonGroup>
 
+#include "unitlession.h"
+
 namespace Ui {
 class TestDialog;
 }

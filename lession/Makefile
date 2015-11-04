@@ -210,6 +210,7 @@ Makefile: lession.pro G:\Qt\5.5\msvc2012\mkspecs\win32-msvc2012\qmake.conf G:\Qt
 		lession.pro \
 		G:/Qt/5.5/msvc2012/lib/qtmaind.prl \
 		G:/Qt/5.5/msvc2012/lib/Qt5Quick.prl \
+		G:/Qt/5.5/msvc2012/lib/Qt5Multimedia.prl \
 		G:/Qt/5.5/msvc2012/lib/Qt5Widgets.prl \
 		G:/Qt/5.5/msvc2012/lib/Qt5Gui.prl \
 		G:/Qt/5.5/msvc2012/lib/Qt5Sql.prl \
@@ -354,6 +355,7 @@ G:\Qt\5.5\msvc2012\mkspecs\features\lex.prf:
 lession.pro:
 G:/Qt/5.5/msvc2012/lib/qtmaind.prl:
 G:/Qt/5.5/msvc2012/lib/Qt5Quick.prl:
+G:/Qt/5.5/msvc2012/lib/Qt5Multimedia.prl:
 G:/Qt/5.5/msvc2012/lib/Qt5Widgets.prl:
 G:/Qt/5.5/msvc2012/lib/Qt5Gui.prl:
 G:/Qt/5.5/msvc2012/lib/Qt5Sql.prl:

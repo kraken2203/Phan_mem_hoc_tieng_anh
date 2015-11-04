@@ -1,6 +1,6 @@
 #include "dialogspeller.h"
 #include "ui_dialogspeller.h"
-#define Path_to_db "F:/GITHUB/Phan_mem_hoc_tieng_anh/lession/database.db"
+#define directory_dic "G:/Cac phan mem/Dictionary/lingoes/lingoes_portable_2.9.1/user_data/speech/American Package"
 
 DialogSpeller::DialogSpeller(QWidget *parent) :
     QDialog(parent),
@@ -18,6 +18,7 @@ DialogSpeller::DialogSpeller(QWidget *parent) :
     heights.push_back(150);
     heights.push_back(600);
     uispeller->splitter->setSizes(heights);
+    player = new QMediaPlayer(0);
 
     mydb = QSqlDatabase::addDatabase("QSQLITE");
     mydb.setDatabaseName(Path_to_db);
@@ -85,24 +86,31 @@ void DialogSpeller::on_pushRepeatAudio_clicked()
 void DialogSpeller::spelling(QString _word)     //Phat am tu _word
 {
     qDebug() << _word;
+    QString filePath = directory_dic;
+    filePath += QString("/%1/%2.mp3").arg(_word[0].toUpper()).arg(_word);
+    player->setMedia(QUrl::fromLocalFile(filePath));
+    player->play();
 }
 
 void DialogSpeller::checkAnswer()                 //Kiem tra ket qua dien vao
 {
     QString answer = uispeller->le_answer->text();
-    while (answer[0] == ' ') answer.remove(0,1);
-    while (answer[answer.length() - 1] == ' ') answer.remove(answer.length() - 1,1);
-    if (uispeller->le_answer->text() == Term[randomQues])
+    if (answer != "")
     {
-        uispeller->flagCheck->setText("True !!!");
-        correctAnswer++;
-        on_pushNext_clicked();
-        timer->start(3000); //time specified in ms
-    }
-    else
-    {
-        uispeller->flagCheck->setText("False !!!");
-        timer->start(3000); //time specified in ms
+        while (answer[0] == ' ') answer.remove(0,1);
+        while (answer[answer.length() - 1] == ' ') answer.remove(answer.length() - 1,1);
+        if (uispeller->le_answer->text() == Term[randomQues])
+        {
+            uispeller->flagCheck->setText("True !!!");
+            correctAnswer++;
+            on_pushNext_clicked();
+            timer->start(3000); //time specified in ms
+        }
+        else
+        {
+            uispeller->flagCheck->setText("False !!!");
+            timer->start(3000); //time specified in ms
+        }
     }
 }
 //Xoa nhan kiem tra dung/sai

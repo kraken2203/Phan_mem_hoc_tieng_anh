@@ -1,6 +1,5 @@
 #include "unitlession.h"
 #include "ui_unitlession.h"
-#define Path_to_db "F:/GITHUB/Phan_mem_hoc_tieng_anh/lession/database.db"
 
 unitlession::unitlession(QWidget *parent) :
     QDialog(parent),

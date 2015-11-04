@@ -11,13 +11,13 @@ MAKEFILE      = Makefile.Release
 
 CC            = cl
 CXX           = cl
-DEFINES       = -DUNICODE -DWIN32 -DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DNDEBUG
+DEFINES       = -DUNICODE -DWIN32 -DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -DQT_NO_DEBUG -DQT_QUICK_LIB -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_QML_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DNDEBUG
 CFLAGS        = -nologo -Zc:wchar_t -O2 -MD -W3 $(DEFINES)
 CXXFLAGS      = -nologo -Zc:wchar_t -O2 -MD -GR -W3 -w34100 -w34189 -w44996 -EHsc $(DEFINES)
-INCPATH       = -I. -IG:\Qt\5.5\msvc2012\include -IG:\Qt\5.5\msvc2012\include\QtQuick -IG:\Qt\5.5\msvc2012\include\QtWidgets -IG:\Qt\5.5\msvc2012\include\QtGui -IG:\Qt\5.5\msvc2012\include\QtANGLE -IG:\Qt\5.5\msvc2012\include\QtSql -IG:\Qt\5.5\msvc2012\include\QtQml -IG:\Qt\5.5\msvc2012\include\QtNetwork -IG:\Qt\5.5\msvc2012\include\QtCore -Irelease -I. -IG:\Qt\5.5\msvc2012\mkspecs\win32-msvc2012 
+INCPATH       = -I. -IG:\Qt\5.5\msvc2012\include -IG:\Qt\5.5\msvc2012\include\QtQuick -IG:\Qt\5.5\msvc2012\include\QtMultimedia -IG:\Qt\5.5\msvc2012\include\QtWidgets -IG:\Qt\5.5\msvc2012\include\QtGui -IG:\Qt\5.5\msvc2012\include\QtANGLE -IG:\Qt\5.5\msvc2012\include\QtSql -IG:\Qt\5.5\msvc2012\include\QtQml -IG:\Qt\5.5\msvc2012\include\QtNetwork -IG:\Qt\5.5\msvc2012\include\QtCore -Irelease -I. -IG:\Qt\5.5\msvc2012\mkspecs\win32-msvc2012 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /INCREMENTAL:NO /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
-LIBS          = /LIBPATH:G:\Qt\5.5\msvc2012\lib G:\Qt\5.5\msvc2012\lib\qtmain.lib shell32.lib /LIBPATH:G:\Qt\5.5\msvc2012\lib G:\Qt\5.5\msvc2012\lib\Qt5Core.lib G:\Qt\5.5\msvc2012\lib\Qt5Quick.lib G:\Qt\5.5\msvc2012\lib\Qt5Widgets.lib G:\Qt\5.5\msvc2012\lib\Qt5Gui.lib G:\Qt\5.5\msvc2012\lib\Qt5Sql.lib G:\Qt\5.5\msvc2012\lib\Qt5Qml.lib G:\Qt\5.5\msvc2012\lib\Qt5Network.lib G:\Qt\5.5\msvc2012\lib\Qt5Core.lib 
+LIBS          = /LIBPATH:G:\Qt\5.5\msvc2012\lib G:\Qt\5.5\msvc2012\lib\qtmain.lib shell32.lib /LIBPATH:G:\Qt\5.5\msvc2012\lib G:\Qt\5.5\msvc2012\lib\Qt5Core.lib G:\Qt\5.5\msvc2012\lib\Qt5Quick.lib G:\Qt\5.5\msvc2012\lib\Qt5Multimedia.lib G:\Qt\5.5\msvc2012\lib\Qt5Widgets.lib G:\Qt\5.5\msvc2012\lib\Qt5Gui.lib G:\Qt\5.5\msvc2012\lib\Qt5Sql.lib G:\Qt\5.5\msvc2012\lib\Qt5Qml.lib G:\Qt\5.5\msvc2012\lib\Qt5Network.lib G:\Qt\5.5\msvc2012\lib\Qt5Core.lib 
 QMAKE         = G:\Qt\5.5\msvc2012\bin\qmake.exe
 IDC           = idc
 IDL           = midl
@@ -137,7 +137,7 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) lession.zip $(SOURCES) $(DIST) lession.pro G:\Qt\5.5\msvc2012\mkspecs\features\spec_pre.prf G:\Qt\5.5\msvc2012\mkspecs\common\msvc-desktop.conf G:\Qt\5.5\msvc2012\mkspecs\qconfig.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dcollision.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dcollision_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dcore.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dcore_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dinput.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dinput_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dlogic.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dlogic_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dquick.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dquick_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dquickrenderer.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dquickrenderer_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3drenderer.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3drenderer_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_axbase.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_axbase_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_axcontainer.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_axcontainer_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_axserver.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_axserver_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_bluetooth.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_bluetooth_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_bootstrap_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_clucene_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_concurrent.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_concurrent_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_core.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_core_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_dbus.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_dbus_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_declarative.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_declarative_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_designer.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_designer_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_designercomponents_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_enginio.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_enginio_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_gui.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_gui_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_help.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_help_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_location.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_location_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_multimedia.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_multimedia_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_multimediawidgets.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_multimediawidgets_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_network.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_network_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_nfc.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_nfc_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_opengl.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_opengl_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_openglextensions.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_openglextensions_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_platformsupport_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_positioning.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_positioning_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_printsupport.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_printsupport_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_qml.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_qml_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_qmldevtools_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_qmltest.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_qmltest_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_quick.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_quick_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_quickparticles_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_quickwidgets.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_quickwidgets_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_script.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_script_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_scripttools.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_scripttools_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_sensors.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_sensors_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_serialport.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_serialport_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_sql.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_sql_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_svg.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_svg_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_testlib.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_testlib_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_uiplugin.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_uitools.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_uitools_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_webchannel.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_webchannel_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_webkit.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_webkit_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_webkitwidgets.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_webkitwidgets_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_websockets.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_websockets_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_widgets.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_widgets_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_winextras.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_winextras_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_xml.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_xml_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_xmlpatterns.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_xmlpatterns_private.pri G:\Qt\5.5\msvc2012\mkspecs\features\qt_functions.prf G:\Qt\5.5\msvc2012\mkspecs\features\qt_config.prf G:\Qt\5.5\msvc2012\mkspecs\features\win32\qt_config.prf G:\Qt\5.5\msvc2012\mkspecs\win32-msvc2012\qmake.conf G:\Qt\5.5\msvc2012\mkspecs\features\spec_post.prf G:\Qt\5.5\msvc2012\mkspecs\features\exclusive_builds.prf G:\Qt\5.5\msvc2012\mkspecs\features\default_pre.prf G:\Qt\5.5\msvc2012\mkspecs\features\win32\default_pre.prf G:\Qt\5.5\msvc2012\mkspecs\features\resolve_config.prf G:\Qt\5.5\msvc2012\mkspecs\features\exclusive_builds_post.prf G:\Qt\5.5\msvc2012\mkspecs\features\default_post.prf G:\Qt\5.5\msvc2012\mkspecs\features\build_pass.prf G:\Qt\5.5\msvc2012\mkspecs\features\qml_debug.prf G:\Qt\5.5\msvc2012\mkspecs\features\declarative_debug.prf G:\Qt\5.5\msvc2012\mkspecs\features\win32\rtti.prf G:\Qt\5.5\msvc2012\mkspecs\features\c++11.prf G:\Qt\5.5\msvc2012\mkspecs\features\precompile_header.prf G:\Qt\5.5\msvc2012\mkspecs\features\warn_on.prf G:\Qt\5.5\msvc2012\mkspecs\features\qt.prf G:\Qt\5.5\msvc2012\mkspecs\features\resources.prf G:\Qt\5.5\msvc2012\mkspecs\features\moc.prf G:\Qt\5.5\msvc2012\mkspecs\features\win32\opengl.prf G:\Qt\5.5\msvc2012\mkspecs\features\uic.prf G:\Qt\5.5\msvc2012\mkspecs\features\win32\windows.prf G:\Qt\5.5\msvc2012\mkspecs\features\testcase_targets.prf G:\Qt\5.5\msvc2012\mkspecs\features\exceptions.prf G:\Qt\5.5\msvc2012\mkspecs\features\yacc.prf G:\Qt\5.5\msvc2012\mkspecs\features\lex.prf lession.pro icon.qrc G:/Qt/5.5/msvc2012/lib/qtmain.prl G:/Qt/5.5/msvc2012/lib/Qt5Quick.prl G:/Qt/5.5/msvc2012/lib/Qt5Widgets.prl G:/Qt/5.5/msvc2012/lib/Qt5Gui.prl G:/Qt/5.5/msvc2012/lib/Qt5Sql.prl G:/Qt/5.5/msvc2012/lib/Qt5Qml.prl G:/Qt/5.5/msvc2012/lib/Qt5Network.prl G:/Qt/5.5/msvc2012/lib/Qt5Core.prl  NO_PCH_SOURCES RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES FORMS YACCSOURCES YACCSOURCES LEXSOURCES 
+	$(ZIP) lession.zip $(SOURCES) $(DIST) lession.pro G:\Qt\5.5\msvc2012\mkspecs\features\spec_pre.prf G:\Qt\5.5\msvc2012\mkspecs\common\msvc-desktop.conf G:\Qt\5.5\msvc2012\mkspecs\qconfig.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dcollision.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dcollision_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dcore.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dcore_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dinput.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dinput_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dlogic.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dlogic_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dquick.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dquick_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dquickrenderer.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3dquickrenderer_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3drenderer.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_3drenderer_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_axbase.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_axbase_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_axcontainer.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_axcontainer_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_axserver.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_axserver_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_bluetooth.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_bluetooth_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_bootstrap_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_clucene_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_concurrent.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_concurrent_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_core.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_core_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_dbus.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_dbus_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_declarative.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_declarative_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_designer.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_designer_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_designercomponents_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_enginio.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_enginio_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_gui.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_gui_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_help.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_help_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_location.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_location_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_multimedia.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_multimedia_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_multimediawidgets.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_multimediawidgets_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_network.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_network_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_nfc.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_nfc_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_opengl.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_opengl_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_openglextensions.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_openglextensions_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_platformsupport_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_positioning.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_positioning_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_printsupport.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_printsupport_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_qml.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_qml_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_qmldevtools_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_qmltest.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_qmltest_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_quick.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_quick_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_quickparticles_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_quickwidgets.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_quickwidgets_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_script.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_script_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_scripttools.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_scripttools_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_sensors.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_sensors_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_serialport.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_serialport_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_sql.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_sql_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_svg.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_svg_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_testlib.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_testlib_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_uiplugin.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_uitools.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_uitools_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_webchannel.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_webchannel_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_webkit.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_webkit_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_webkitwidgets.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_webkitwidgets_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_websockets.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_websockets_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_widgets.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_widgets_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_winextras.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_winextras_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_xml.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_xml_private.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_xmlpatterns.pri G:\Qt\5.5\msvc2012\mkspecs\modules\qt_lib_xmlpatterns_private.pri G:\Qt\5.5\msvc2012\mkspecs\features\qt_functions.prf G:\Qt\5.5\msvc2012\mkspecs\features\qt_config.prf G:\Qt\5.5\msvc2012\mkspecs\features\win32\qt_config.prf G:\Qt\5.5\msvc2012\mkspecs\win32-msvc2012\qmake.conf G:\Qt\5.5\msvc2012\mkspecs\features\spec_post.prf G:\Qt\5.5\msvc2012\mkspecs\features\exclusive_builds.prf G:\Qt\5.5\msvc2012\mkspecs\features\default_pre.prf G:\Qt\5.5\msvc2012\mkspecs\features\win32\default_pre.prf G:\Qt\5.5\msvc2012\mkspecs\features\resolve_config.prf G:\Qt\5.5\msvc2012\mkspecs\features\exclusive_builds_post.prf G:\Qt\5.5\msvc2012\mkspecs\features\default_post.prf G:\Qt\5.5\msvc2012\mkspecs\features\build_pass.prf G:\Qt\5.5\msvc2012\mkspecs\features\qml_debug.prf G:\Qt\5.5\msvc2012\mkspecs\features\declarative_debug.prf G:\Qt\5.5\msvc2012\mkspecs\features\win32\rtti.prf G:\Qt\5.5\msvc2012\mkspecs\features\c++11.prf G:\Qt\5.5\msvc2012\mkspecs\features\precompile_header.prf G:\Qt\5.5\msvc2012\mkspecs\features\warn_on.prf G:\Qt\5.5\msvc2012\mkspecs\features\qt.prf G:\Qt\5.5\msvc2012\mkspecs\features\resources.prf G:\Qt\5.5\msvc2012\mkspecs\features\moc.prf G:\Qt\5.5\msvc2012\mkspecs\features\win32\opengl.prf G:\Qt\5.5\msvc2012\mkspecs\features\uic.prf G:\Qt\5.5\msvc2012\mkspecs\features\win32\windows.prf G:\Qt\5.5\msvc2012\mkspecs\features\testcase_targets.prf G:\Qt\5.5\msvc2012\mkspecs\features\exceptions.prf G:\Qt\5.5\msvc2012\mkspecs\features\yacc.prf G:\Qt\5.5\msvc2012\mkspecs\features\lex.prf lession.pro icon.qrc G:/Qt/5.5/msvc2012/lib/qtmain.prl G:/Qt/5.5/msvc2012/lib/Qt5Quick.prl G:/Qt/5.5/msvc2012/lib/Qt5Multimedia.prl G:/Qt/5.5/msvc2012/lib/Qt5Widgets.prl G:/Qt/5.5/msvc2012/lib/Qt5Gui.prl G:/Qt/5.5/msvc2012/lib/Qt5Sql.prl G:/Qt/5.5/msvc2012/lib/Qt5Qml.prl G:/Qt/5.5/msvc2012/lib/Qt5Network.prl G:/Qt/5.5/msvc2012/lib/Qt5Core.prl  NO_PCH_SOURCES RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES FORMS YACCSOURCES YACCSOURCES LEXSOURCES 
 
 clean: compiler_clean 
 	-$(DEL_FILE) release\main.obj release\unitlession.obj release\testdialog.obj release\learndialog.obj release\dialogspeller.obj release\qrc_icon.obj release\moc_unitlession.obj release\moc_testdialog.obj release\moc_learndialog.obj release\moc_dialogspeller.obj
@@ -459,9 +459,23 @@ release\moc_unitlession.cpp: G:\Qt\5.5\msvc2012\include\QtWidgets\QDialog \
 		G:\Qt\5.5\msvc2012\include\QtSql\QSqlQuery \
 		dialogspeller.h \
 		G:\Qt\5.5\msvc2012\include\QtCore\QTimer \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\QMediaPlayer \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaplayer.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaobject.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qtmultimediadefs.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmultimedia.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediacontent.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaresource.h \
+		G:\Qt\5.5\msvc2012\include\QtNetwork\qnetworkrequest.h \
+		G:\Qt\5.5\msvc2012\include\QtCore\QSharedDataPointer \
+		G:\Qt\5.5\msvc2012\include\QtCore\QString \
+		G:\Qt\5.5\msvc2012\include\QtCore\QUrl \
+		G:\Qt\5.5\msvc2012\include\QtCore\QVariant \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaenumdebug.h \
+		G:\Qt\5.5\msvc2012\include\QtNetwork\qnetworkconfiguration.h \
 		G:\Qt\5.5\msvc2012\include\QtSql\QSqlQueryModel \
 		unitlession.h
-	G:\Qt\5.5\msvc2012\bin\moc.exe $(DEFINES) -D_MSC_VER=1700 -D_WIN32 -IG:/Qt/5.5/msvc2012/mkspecs/win32-msvc2012 -IF:/GITHUB/Phan_mem_hoc_tieng_anh/lession -IG:/Qt/5.5/msvc2012/include -IG:/Qt/5.5/msvc2012/include/QtQuick -IG:/Qt/5.5/msvc2012/include/QtWidgets -IG:/Qt/5.5/msvc2012/include/QtGui -IG:/Qt/5.5/msvc2012/include/QtANGLE -IG:/Qt/5.5/msvc2012/include/QtSql -IG:/Qt/5.5/msvc2012/include/QtQml -IG:/Qt/5.5/msvc2012/include/QtNetwork -IG:/Qt/5.5/msvc2012/include/QtCore unitlession.h -o release\moc_unitlession.cpp
+	G:\Qt\5.5\msvc2012\bin\moc.exe $(DEFINES) -D_MSC_VER=1700 -D_WIN32 -IG:/Qt/5.5/msvc2012/mkspecs/win32-msvc2012 -IF:/GITHUB/Phan_mem_hoc_tieng_anh/lession -IG:/Qt/5.5/msvc2012/include -IG:/Qt/5.5/msvc2012/include/QtQuick -IG:/Qt/5.5/msvc2012/include/QtMultimedia -IG:/Qt/5.5/msvc2012/include/QtWidgets -IG:/Qt/5.5/msvc2012/include/QtGui -IG:/Qt/5.5/msvc2012/include/QtANGLE -IG:/Qt/5.5/msvc2012/include/QtSql -IG:/Qt/5.5/msvc2012/include/QtQml -IG:/Qt/5.5/msvc2012/include/QtNetwork -IG:/Qt/5.5/msvc2012/include/QtCore unitlession.h -o release\moc_unitlession.cpp
 
 release\moc_testdialog.cpp: G:\Qt\5.5\msvc2012\include\QtWidgets\QDialog \
 		G:\Qt\5.5\msvc2012\include\QtWidgets\qdialog.h \
@@ -739,7 +753,7 @@ release\moc_testdialog.cpp: G:\Qt\5.5\msvc2012\include\QtWidgets\QDialog \
 		G:\Qt\5.5\msvc2012\include\QtWidgets\QButtonGroup \
 		G:\Qt\5.5\msvc2012\include\QtWidgets\qbuttongroup.h \
 		testdialog.h
-	G:\Qt\5.5\msvc2012\bin\moc.exe $(DEFINES) -D_MSC_VER=1700 -D_WIN32 -IG:/Qt/5.5/msvc2012/mkspecs/win32-msvc2012 -IF:/GITHUB/Phan_mem_hoc_tieng_anh/lession -IG:/Qt/5.5/msvc2012/include -IG:/Qt/5.5/msvc2012/include/QtQuick -IG:/Qt/5.5/msvc2012/include/QtWidgets -IG:/Qt/5.5/msvc2012/include/QtGui -IG:/Qt/5.5/msvc2012/include/QtANGLE -IG:/Qt/5.5/msvc2012/include/QtSql -IG:/Qt/5.5/msvc2012/include/QtQml -IG:/Qt/5.5/msvc2012/include/QtNetwork -IG:/Qt/5.5/msvc2012/include/QtCore testdialog.h -o release\moc_testdialog.cpp
+	G:\Qt\5.5\msvc2012\bin\moc.exe $(DEFINES) -D_MSC_VER=1700 -D_WIN32 -IG:/Qt/5.5/msvc2012/mkspecs/win32-msvc2012 -IF:/GITHUB/Phan_mem_hoc_tieng_anh/lession -IG:/Qt/5.5/msvc2012/include -IG:/Qt/5.5/msvc2012/include/QtQuick -IG:/Qt/5.5/msvc2012/include/QtMultimedia -IG:/Qt/5.5/msvc2012/include/QtWidgets -IG:/Qt/5.5/msvc2012/include/QtGui -IG:/Qt/5.5/msvc2012/include/QtANGLE -IG:/Qt/5.5/msvc2012/include/QtSql -IG:/Qt/5.5/msvc2012/include/QtQml -IG:/Qt/5.5/msvc2012/include/QtNetwork -IG:/Qt/5.5/msvc2012/include/QtCore testdialog.h -o release\moc_testdialog.cpp
 
 release\moc_learndialog.cpp: G:\Qt\5.5\msvc2012\include\QtWidgets\QDialog \
 		G:\Qt\5.5\msvc2012\include\QtWidgets\qdialog.h \
@@ -853,7 +867,7 @@ release\moc_learndialog.cpp: G:\Qt\5.5\msvc2012\include\QtWidgets\QDialog \
 		G:\Qt\5.5\msvc2012\include\QtSql\QSqlQuery \
 		G:\Qt\5.5\msvc2012\include\QtSql\qsqlquery.h \
 		learndialog.h
-	G:\Qt\5.5\msvc2012\bin\moc.exe $(DEFINES) -D_MSC_VER=1700 -D_WIN32 -IG:/Qt/5.5/msvc2012/mkspecs/win32-msvc2012 -IF:/GITHUB/Phan_mem_hoc_tieng_anh/lession -IG:/Qt/5.5/msvc2012/include -IG:/Qt/5.5/msvc2012/include/QtQuick -IG:/Qt/5.5/msvc2012/include/QtWidgets -IG:/Qt/5.5/msvc2012/include/QtGui -IG:/Qt/5.5/msvc2012/include/QtANGLE -IG:/Qt/5.5/msvc2012/include/QtSql -IG:/Qt/5.5/msvc2012/include/QtQml -IG:/Qt/5.5/msvc2012/include/QtNetwork -IG:/Qt/5.5/msvc2012/include/QtCore learndialog.h -o release\moc_learndialog.cpp
+	G:\Qt\5.5\msvc2012\bin\moc.exe $(DEFINES) -D_MSC_VER=1700 -D_WIN32 -IG:/Qt/5.5/msvc2012/mkspecs/win32-msvc2012 -IF:/GITHUB/Phan_mem_hoc_tieng_anh/lession -IG:/Qt/5.5/msvc2012/include -IG:/Qt/5.5/msvc2012/include/QtQuick -IG:/Qt/5.5/msvc2012/include/QtMultimedia -IG:/Qt/5.5/msvc2012/include/QtWidgets -IG:/Qt/5.5/msvc2012/include/QtGui -IG:/Qt/5.5/msvc2012/include/QtANGLE -IG:/Qt/5.5/msvc2012/include/QtSql -IG:/Qt/5.5/msvc2012/include/QtQml -IG:/Qt/5.5/msvc2012/include/QtNetwork -IG:/Qt/5.5/msvc2012/include/QtCore learndialog.h -o release\moc_learndialog.cpp
 
 release\moc_dialogspeller.cpp: G:\Qt\5.5\msvc2012\include\QtWidgets\QDialog \
 		G:\Qt\5.5\msvc2012\include\QtWidgets\qdialog.h \
@@ -1108,8 +1122,22 @@ release\moc_dialogspeller.cpp: G:\Qt\5.5\msvc2012\include\QtWidgets\QDialog \
 		G:\Qt\5.5\msvc2012\include\QtWidgets\QMessageBox \
 		G:\Qt\5.5\msvc2012\include\QtWidgets\qmessagebox.h \
 		G:\Qt\5.5\msvc2012\include\QtCore\QTimer \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\QMediaPlayer \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaplayer.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaobject.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qtmultimediadefs.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmultimedia.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediacontent.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaresource.h \
+		G:\Qt\5.5\msvc2012\include\QtNetwork\qnetworkrequest.h \
+		G:\Qt\5.5\msvc2012\include\QtCore\QSharedDataPointer \
+		G:\Qt\5.5\msvc2012\include\QtCore\QString \
+		G:\Qt\5.5\msvc2012\include\QtCore\QUrl \
+		G:\Qt\5.5\msvc2012\include\QtCore\QVariant \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaenumdebug.h \
+		G:\Qt\5.5\msvc2012\include\QtNetwork\qnetworkconfiguration.h \
 		dialogspeller.h
-	G:\Qt\5.5\msvc2012\bin\moc.exe $(DEFINES) -D_MSC_VER=1700 -D_WIN32 -IG:/Qt/5.5/msvc2012/mkspecs/win32-msvc2012 -IF:/GITHUB/Phan_mem_hoc_tieng_anh/lession -IG:/Qt/5.5/msvc2012/include -IG:/Qt/5.5/msvc2012/include/QtQuick -IG:/Qt/5.5/msvc2012/include/QtWidgets -IG:/Qt/5.5/msvc2012/include/QtGui -IG:/Qt/5.5/msvc2012/include/QtANGLE -IG:/Qt/5.5/msvc2012/include/QtSql -IG:/Qt/5.5/msvc2012/include/QtQml -IG:/Qt/5.5/msvc2012/include/QtNetwork -IG:/Qt/5.5/msvc2012/include/QtCore dialogspeller.h -o release\moc_dialogspeller.cpp
+	G:\Qt\5.5\msvc2012\bin\moc.exe $(DEFINES) -D_MSC_VER=1700 -D_WIN32 -IG:/Qt/5.5/msvc2012/mkspecs/win32-msvc2012 -IF:/GITHUB/Phan_mem_hoc_tieng_anh/lession -IG:/Qt/5.5/msvc2012/include -IG:/Qt/5.5/msvc2012/include/QtQuick -IG:/Qt/5.5/msvc2012/include/QtMultimedia -IG:/Qt/5.5/msvc2012/include/QtWidgets -IG:/Qt/5.5/msvc2012/include/QtGui -IG:/Qt/5.5/msvc2012/include/QtANGLE -IG:/Qt/5.5/msvc2012/include/QtSql -IG:/Qt/5.5/msvc2012/include/QtQml -IG:/Qt/5.5/msvc2012/include/QtNetwork -IG:/Qt/5.5/msvc2012/include/QtCore dialogspeller.h -o release\moc_dialogspeller.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1421,6 +1449,20 @@ release\main.obj: main.cpp unitlession.h \
 		G:\Qt\5.5\msvc2012\include\QtSql\QSqlQuery \
 		dialogspeller.h \
 		G:\Qt\5.5\msvc2012\include\QtCore\QTimer \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\QMediaPlayer \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaplayer.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaobject.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qtmultimediadefs.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmultimedia.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediacontent.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaresource.h \
+		G:\Qt\5.5\msvc2012\include\QtNetwork\qnetworkrequest.h \
+		G:\Qt\5.5\msvc2012\include\QtCore\QSharedDataPointer \
+		G:\Qt\5.5\msvc2012\include\QtCore\QString \
+		G:\Qt\5.5\msvc2012\include\QtCore\QUrl \
+		G:\Qt\5.5\msvc2012\include\QtCore\QVariant \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaenumdebug.h \
+		G:\Qt\5.5\msvc2012\include\QtNetwork\qnetworkconfiguration.h \
 		G:\Qt\5.5\msvc2012\include\QtSql\QSqlQueryModel \
 		G:\Qt\5.5\msvc2012\include\QtWidgets\QApplication \
 		G:\Qt\5.5\msvc2012\include\QtWidgets\qapplication.h \
@@ -1709,8 +1751,37 @@ release\unitlession.obj: unitlession.cpp unitlession.h \
 		G:\Qt\5.5\msvc2012\include\QtSql\QSqlQuery \
 		dialogspeller.h \
 		G:\Qt\5.5\msvc2012\include\QtCore\QTimer \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\QMediaPlayer \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaplayer.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaobject.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qtmultimediadefs.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmultimedia.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediacontent.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaresource.h \
+		G:\Qt\5.5\msvc2012\include\QtNetwork\qnetworkrequest.h \
+		G:\Qt\5.5\msvc2012\include\QtCore\QSharedDataPointer \
+		G:\Qt\5.5\msvc2012\include\QtCore\QString \
+		G:\Qt\5.5\msvc2012\include\QtCore\QUrl \
+		G:\Qt\5.5\msvc2012\include\QtCore\QVariant \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaenumdebug.h \
+		G:\Qt\5.5\msvc2012\include\QtNetwork\qnetworkconfiguration.h \
 		G:\Qt\5.5\msvc2012\include\QtSql\QSqlQueryModel \
-		ui_unitlession.h
+		ui_unitlession.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QAction \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qaction.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qactiongroup.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QApplication \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qapplication.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qdesktopwidget.h \
+		G:\Qt\5.5\msvc2012\include\QtGui\qguiapplication.h \
+		G:\Qt\5.5\msvc2012\include\QtGui\qinputmethod.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QHeaderView \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qheaderview.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QPushButton \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qpushbutton.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QTableView \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qtableview.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QVBoxLayout
 
 release\testdialog.obj: testdialog.cpp testdialog.h \
 		G:\Qt\5.5\msvc2012\include\QtWidgets\QDialog \
@@ -1988,7 +2059,27 @@ release\testdialog.obj: testdialog.cpp testdialog.h \
 		G:\Qt\5.5\msvc2012\include\QtWidgets\qabstractbutton.h \
 		G:\Qt\5.5\msvc2012\include\QtWidgets\QButtonGroup \
 		G:\Qt\5.5\msvc2012\include\QtWidgets\qbuttongroup.h \
-		ui_testdialog.h
+		ui_testdialog.h \
+		G:\Qt\5.5\msvc2012\include\QtCore\QVariant \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QAction \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qaction.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qactiongroup.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QApplication \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qapplication.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qdesktopwidget.h \
+		G:\Qt\5.5\msvc2012\include\QtGui\qguiapplication.h \
+		G:\Qt\5.5\msvc2012\include\QtGui\qinputmethod.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QCheckBox \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qcheckbox.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QFrame \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QHeaderView \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qheaderview.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QPushButton \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qpushbutton.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QSplitter \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qsplitter.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QVBoxLayout \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QWidget
 
 release\learndialog.obj: learndialog.cpp learndialog.h \
 		G:\Qt\5.5\msvc2012\include\QtWidgets\QDialog \
@@ -2102,7 +2193,58 @@ release\learndialog.obj: learndialog.cpp learndialog.h \
 		G:\Qt\5.5\msvc2012\include\QtCore\QDebug \
 		G:\Qt\5.5\msvc2012\include\QtSql\QSqlQuery \
 		G:\Qt\5.5\msvc2012\include\QtSql\qsqlquery.h \
-		ui_learndialog.h
+		ui_learndialog.h \
+		G:\Qt\5.5\msvc2012\include\QtCore\QVariant \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QAction \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qaction.h \
+		G:\Qt\5.5\msvc2012\include\QtGui\qicon.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qactiongroup.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QApplication \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qapplication.h \
+		G:\Qt\5.5\msvc2012\include\QtCore\qcoreapplication.h \
+		G:\Qt\5.5\msvc2012\include\QtCore\qeventloop.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qdesktopwidget.h \
+		G:\Qt\5.5\msvc2012\include\QtGui\qguiapplication.h \
+		G:\Qt\5.5\msvc2012\include\QtGui\qinputmethod.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QButtonGroup \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qbuttongroup.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QFrame \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qframe.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QHBoxLayout \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qboxlayout.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qlayout.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qlayoutitem.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qgridlayout.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QHeaderView \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qheaderview.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qabstractitemview.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qabstractscrollarea.h \
+		G:\Qt\5.5\msvc2012\include\QtCore\qabstractitemmodel.h \
+		G:\Qt\5.5\msvc2012\include\QtCore\qitemselectionmodel.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qabstractitemdelegate.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qstyleoption.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qabstractspinbox.h \
+		G:\Qt\5.5\msvc2012\include\QtGui\qvalidator.h \
+		G:\Qt\5.5\msvc2012\include\QtCore\qregularexpression.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qslider.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qabstractslider.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qstyle.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qtabbar.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qtabwidget.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qrubberband.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QLabel \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qlabel.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QLineEdit \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qlineedit.h \
+		G:\Qt\5.5\msvc2012\include\QtGui\qtextcursor.h \
+		G:\Qt\5.5\msvc2012\include\QtGui\qtextformat.h \
+		G:\Qt\5.5\msvc2012\include\QtGui\qpen.h \
+		G:\Qt\5.5\msvc2012\include\QtGui\qtextoption.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QPushButton \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qpushbutton.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qabstractbutton.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QSpacerItem \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QVBoxLayout
 
 release\dialogspeller.obj: dialogspeller.cpp dialogspeller.h \
 		G:\Qt\5.5\msvc2012\include\QtWidgets\QDialog \
@@ -2358,7 +2500,56 @@ release\dialogspeller.obj: dialogspeller.cpp dialogspeller.h \
 		G:\Qt\5.5\msvc2012\include\QtWidgets\QMessageBox \
 		G:\Qt\5.5\msvc2012\include\QtWidgets\qmessagebox.h \
 		G:\Qt\5.5\msvc2012\include\QtCore\QTimer \
-		ui_dialogspeller.h
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\QMediaPlayer \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaplayer.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaobject.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qtmultimediadefs.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmultimedia.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediacontent.h \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaresource.h \
+		G:\Qt\5.5\msvc2012\include\QtNetwork\qnetworkrequest.h \
+		G:\Qt\5.5\msvc2012\include\QtCore\QSharedDataPointer \
+		G:\Qt\5.5\msvc2012\include\QtCore\QString \
+		G:\Qt\5.5\msvc2012\include\QtCore\QUrl \
+		G:\Qt\5.5\msvc2012\include\QtCore\QVariant \
+		G:\Qt\5.5\msvc2012\include\QtMultimedia\qmediaenumdebug.h \
+		G:\Qt\5.5\msvc2012\include\QtNetwork\qnetworkconfiguration.h \
+		ui_dialogspeller.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QAction \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qaction.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qactiongroup.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QApplication \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qapplication.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qdesktopwidget.h \
+		G:\Qt\5.5\msvc2012\include\QtGui\qguiapplication.h \
+		G:\Qt\5.5\msvc2012\include\QtGui\qinputmethod.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QButtonGroup \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qbuttongroup.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QHBoxLayout \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qboxlayout.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qlayout.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qlayoutitem.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qgridlayout.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QHeaderView \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qheaderview.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QLabel \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qlabel.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QLineEdit \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qlineedit.h \
+		G:\Qt\5.5\msvc2012\include\QtGui\qtextcursor.h \
+		G:\Qt\5.5\msvc2012\include\QtGui\qtextformat.h \
+		G:\Qt\5.5\msvc2012\include\QtGui\qpen.h \
+		G:\Qt\5.5\msvc2012\include\QtGui\qtextoption.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QProgressBar \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qprogressbar.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QPushButton \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qpushbutton.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qabstractbutton.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QSpacerItem \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QSplitter \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\qsplitter.h \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QVBoxLayout \
+		G:\Qt\5.5\msvc2012\include\QtWidgets\QWidget
 
 release\qrc_icon.obj: release\qrc_icon.cpp 
 
